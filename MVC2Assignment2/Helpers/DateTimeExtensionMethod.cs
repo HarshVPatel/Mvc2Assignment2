@@ -7,5 +7,15 @@ namespace MVC2Assignment2.Helpers
 {
     public static class DateTimeExtensionMethod
     {
+
+        public static int CalculateAge(DateTime birthDay)
+        {
+            int years = DateTime.Now.Year - birthDay.Year;
+
+            if ((birthDay.Month > DateTime.Now.Month) || (birthDay.Month == DateTime.Now.Month && birthDay.Day > DateTime.Now.Day))
+                years--;
+
+            return years;
+        }
     }
 }
