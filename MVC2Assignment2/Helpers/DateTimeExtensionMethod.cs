@@ -7,15 +7,21 @@ namespace MVC2Assignment2.Helpers
 {
     public static class DateTimeExtensionMethod
     {
-
-        public static int CalculateAge(DateTime birthDay)
+     
+        static public int Age(this DateTime dateOfBirth)
         {
-            int years = DateTime.Now.Year - birthDay.Year;
+            dateOfBirth = new DateTime(1998, 10, 12);
 
-            if ((birthDay.Month > DateTime.Now.Month) || (birthDay.Month == DateTime.Now.Month && birthDay.Day > DateTime.Now.Day))
-                years--;
-
-            return years;
+            if (DateTime.Today.Month < dateOfBirth.Month ||
+            DateTime.Today.Month == dateOfBirth.Month &&
+             DateTime.Today.Day < dateOfBirth.Day)
+            {
+                return DateTime.Today.Year - dateOfBirth.Year - 1;
+            }
+            else
+                return DateTime.Today.Year - dateOfBirth.Year;
         }
+
+     
     }
 }
